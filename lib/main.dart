@@ -1,3 +1,4 @@
+import 'package:ai_chat/screens/chat/chat_screen.dart';
 import 'package:ai_chat/screens/home/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,6 @@ void main() {
       colorScheme: kColorSchemeDark,
       textTheme: GoogleFonts.latoTextTheme(),
     ),
-    home: const Tabs(),
+    home: const ChatScreen(),
   ));
 }

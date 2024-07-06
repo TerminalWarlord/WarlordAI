@@ -1,3 +1,4 @@
+import 'package:ai_chat/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Tabs extends StatefulWidget {
@@ -12,6 +13,19 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 70,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Center(
+            child: Image.asset(
+              'assets/images/TerminalAI_3.png',
+              width: 160,
+            ),
+          ),
+        ),
+      ),
+      body: HomeScreen(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (value) {

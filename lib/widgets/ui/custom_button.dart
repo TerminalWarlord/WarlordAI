@@ -4,22 +4,20 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.color,
-    required this.label,
     this.width = double.infinity,
     this.height = 50,
     this.padding,
     required this.onClick,
     this.radius = 8,
-    this.style,
+    required this.widget,
     this.border,
   });
-  final String label;
   final double width, height, radius;
   final Color? color;
   final EdgeInsets? padding;
   final void Function() onClick;
-  final TextStyle? style;
   final Border? border;
+  final Widget widget;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +32,7 @@ class CustomButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: onClick,
-        child: Text(
-          label,
-          style: style,
-        ),
+        child: widget,
       ),
     );
   }

@@ -133,19 +133,27 @@ class _SigninState extends State<Signin> {
             height: errors.isNotEmpty ? 10 : 0,
           ),
           CustomButton(
-            label: _mode == 'signin' ? 'Login' : 'Sign Up',
-            onClick: _validateForm,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+            widget: Text(
+              _mode == 'signin' ? 'Login' : 'Sign Up',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
+            onClick: _validateForm,
             radius: 15,
           ),
           const SizedBox(
             height: 20,
           ),
           CustomButton(
-            label: _mode == 'signin' ? 'Sign Up' : 'Login',
+            widget: Text(
+              _mode == 'signin' ? 'Sign Up' : 'Login',
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
             onClick: _toggleMode,
             color: const Color.fromARGB(255, 229, 229, 229),
             border: Border.all(
@@ -153,10 +161,6 @@ class _SigninState extends State<Signin> {
               color: const Color.fromARGB(255, 184, 184, 184),
             ),
             radius: 15,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
           ),
         ],
       ),
