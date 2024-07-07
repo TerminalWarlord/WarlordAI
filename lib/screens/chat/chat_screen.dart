@@ -1,3 +1,4 @@
+import 'package:ai_chat/widgets/chat/chat_bubble.dart';
 import 'package:ai_chat/widgets/chat/main_drawer.dart';
 import 'package:ai_chat/widgets/chat/send_message.dart';
 import 'package:ai_chat/widgets/ui/custom_input.dart';
@@ -46,7 +47,31 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       ),
       drawer: MainDrawer(),
-      body: SendMessage(),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: [
+                    ...List.generate(
+                      10,
+                      (index) {
+                        return ChatBubble();
+                      },
+                    ),
+                    ChatBubble(
+                      isMe: false,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SendMessage(),
+        ],
+      ),
     );
   }
 }
