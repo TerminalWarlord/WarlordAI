@@ -4,8 +4,10 @@ class ChatBubble extends StatelessWidget {
   const ChatBubble({
     super.key,
     this.isMe = true,
+    required this.message,
   });
   final bool isMe;
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,8 @@ class ChatBubble extends StatelessWidget {
                 color: Colors.amber,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Text(
-                'Hello  weufhweifw weiufhwefejw wefiuweufew fwefweu weifhweiohfowieh  wrehiofweh',
+              child: Text(
+                message,
                 softWrap: true,
               ),
             ),

@@ -1,13 +1,23 @@
+import 'package:ai_chat/providers/message_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SendMessage extends StatefulWidget {
+class SendMessage extends ConsumerStatefulWidget {
   const SendMessage({super.key});
 
   @override
-  State<SendMessage> createState() => _SendMessageState();
+  ConsumerState<SendMessage> createState() => _SendMessageState();
 }
 
-class _SendMessageState extends State<SendMessage> {
+class _SendMessageState extends ConsumerState<SendMessage> {
+  final TextEditingController _messageController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _messageController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +34,7 @@ class _SendMessageState extends State<SendMessage> {
         children: [
           Expanded(
             child: TextFormField(
+              controller: _messageController,
               maxLines: null,
               decoration: const InputDecoration(
                 focusedBorder: InputBorder.none,
@@ -33,7 +44,14 @@ class _SendMessageState extends State<SendMessage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_messageController.text.isEmpty) return;
+              print(_messageController.text);
+              ref
+                  .watch(messageProvider.notifier)
+                  .addMessage(_messageController.text, 'isMe');
+              _messageController.clear();
+            },
             icon: const ImageIcon(
               AssetImage(
                 'assets/icons/send.png',

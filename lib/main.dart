@@ -1,6 +1,7 @@
 import 'package:ai_chat/screens/chat/chat_screen.dart';
 import 'package:ai_chat/screens/home/tabs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final kColorScheme = ColorScheme.fromSeed(
@@ -12,14 +13,18 @@ final kColorSchemeDark = ColorScheme.fromSeed(
 );
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData().copyWith(
-        colorScheme: kColorScheme, textTheme: GoogleFonts.latoTextTheme()),
-    darkTheme: ThemeData().copyWith(
-      colorScheme: kColorSchemeDark,
-      textTheme: GoogleFonts.latoTextTheme(),
+  runApp(
+    ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData().copyWith(
+            colorScheme: kColorScheme, textTheme: GoogleFonts.latoTextTheme()),
+        darkTheme: ThemeData().copyWith(
+          colorScheme: kColorSchemeDark,
+          textTheme: GoogleFonts.latoTextTheme(),
+        ),
+        home: const ChatScreen(),
+      ),
     ),
-    home: const ChatScreen(),
-  ));
+  );
 }
